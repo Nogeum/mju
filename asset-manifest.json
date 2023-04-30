@@ -1,17 +1,30 @@
 {
   "files": {
-    "main.css": "/mju/static/css/main.3638f8fa.css",
-    "main.js": "/mju/static/js/main.8e1ff865.js",
+    "main.css": "/mju/static/css/main.395abced.css",
+    "main.js": "/mju/static/js/main.7431d6c8.js",
+    "static/media/title.png": "/mju/static/media/title.ea0f9e746dc2ef66076d.png",
+    "static/media/pizza.png": "/mju/static/media/pizza.238cefb4b78c1937f5a8.png",
+    "static/media/bibimbap.png": "/mju/static/media/bibimbap.64e1a80298265ab71c43.png",
+    "static/media/korean-bbq.png": "/mju/static/media/korean-bbq.0ededc1bc0fffb2a2ab4.png",
+    "static/media/tteokbokki.png": "/mju/static/media/tteokbokki.15e7c42acddd56f273e0.png",
+    "static/media/buns.png": "/mju/static/media/buns.ebacfc38bc34b465c918.png",
+    "static/media/meat.png": "/mju/static/media/meat.9e5483944ada40b94f84.png",
+    "static/media/ramen.png": "/mju/static/media/ramen.8dd1730214ca80dca928.png",
+    "static/media/burger.png": "/mju/static/media/burger.6e4ad84549d0bb0f0ac9.png",
+    "static/media/bap.png": "/mju/static/media/bap.652c5c723abe4b753da7.png",
+    "static/media/soju.png": "/mju/static/media/soju.1fb85ac8700dcdd989e6.png",
+    "static/media/coffee.png": "/mju/static/media/coffee.cf212b069ac39ec19294.png",
+    "static/media/chicken.png": "/mju/static/media/chicken.bd0f911fddcff65605fe.png",
     "static/media/slick.svg": "/mju/static/media/slick.2630a3e3eab21c607e21.svg",
     "static/media/slick.eot": "/mju/static/media/slick.a4e97f5a2a64f0ab1323.eot",
     "static/media/slick.ttf": "/mju/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/mju/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/mju/index.html",
-    "main.3638f8fa.css.map": "/mju/static/css/main.3638f8fa.css.map",
-    "main.8e1ff865.js.map": "/mju/static/js/main.8e1ff865.js.map"
+    "main.395abced.css.map": "/mju/static/css/main.395abced.css.map",
+    "main.7431d6c8.js.map": "/mju/static/js/main.7431d6c8.js.map"
   },
   "entrypoints": [
-    "static/css/main.3638f8fa.css",
-    "static/js/main.8e1ff865.js"
+    "static/css/main.395abced.css",
+    "static/js/main.7431d6c8.js"
   ]
 }
