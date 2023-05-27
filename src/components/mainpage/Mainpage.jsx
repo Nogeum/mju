@@ -10,12 +10,14 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import { useState } from 'react';
 import axios from 'axios';
-import event1 from '../../img/event1.jpeg';
-import event2 from '../../img/event2.jpeg';
-import event3 from '../../img/event3.jpeg';
-import event4 from '../../img/event4.jpeg';
+import event1 from '../../img/event1.jpg';
+import event2 from '../../img/event2.jpg';
+import event3 from '../../img/event3.jpg';
+import event4 from '../../img/event4.jpg';
+import { useNavigate } from 'react-router-dom';
 
 const Mainpage = () => {
+  const navigate = useNavigate();
   const [recList, setRecList] = useState([]);
   const settings = {
     dots: true,
@@ -44,16 +46,36 @@ const Mainpage = () => {
         <div className={styles.carousel_container}>
           <Slider {...settings}>
             <div className={styles.carousel_item}>
-              <img src={event1} alt='' className={styles.test_image} />
+              <a
+                href='https://www.instagram.com/p/CpBi1xbhFLR/'
+                target='_blank'
+              >
+                <img src={event1} alt='' className={styles.test_image} />
+              </a>
             </div>
             <div className={styles.carousel_item}>
-              <img src={event2} alt='' className={styles.test_image} />
+              <a
+                href='https://www.instagram.com/p/CpB23MIhOLz/'
+                target='_blank'
+              >
+                <img src={event2} alt='' className={styles.test_image} />
+              </a>
             </div>
             <div className={styles.carousel_item}>
-              <img src={event3} alt='' className={styles.test_image} />
+              <a
+                href='https://www.instagram.com/p/CpBjp09h2Lp/'
+                target='_blank'
+              >
+                <img src={event3} alt='' className={styles.test_image} />
+              </a>
             </div>
             <div className={styles.carousel_item}>
-              <img src={event4} alt='' className={styles.test_image} />
+              <a
+                href='https://www.instagram.com/p/CpB3CLphHHh/'
+                target='_blank'
+              >
+                <img src={event4} alt='' className={styles.test_image} />
+              </a>
             </div>
           </Slider>
         </div>
