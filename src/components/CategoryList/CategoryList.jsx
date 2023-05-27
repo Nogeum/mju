@@ -25,13 +25,13 @@ const CategoryList = () => {
       id: 1,
       title: '피자',
       image: pizza,
-      path: '/list/pizza',
+      path: '/list/피자',
     },
     {
       id: 2,
       title: '중식',
       image: chinese,
-      path: '/list/chinese',
+      path: '/list/중식',
     },
     {
       id: 3,

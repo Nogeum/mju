@@ -6,8 +6,6 @@ import LoginPage from './components/LoginPage/LoginPage';
 import DetailPage from './components/DetailPage/DetailPage';
 import SignUp from './components/SignUp/SignUp';
 import Reels from './components/Reels/Reels';
-import { SearchResultPage } from './components/SearchResultPage/SearchResultPage';
-import Dictaphone from './components/Dictaphone/Dictaphone';
 
 function App() {
   return (
@@ -21,7 +19,6 @@ function App() {
           <Route path='/signup' element={<SignUp />}></Route>
           <Route path='/reels' element={<Reels />}></Route>
           <Route path='/search/:category' element={<ListItem />}></Route>
-          <Route path='/dictaphone' element={<Dictaphone />}></Route>
         </Routes>
       </BrowserRouter>
     </div>

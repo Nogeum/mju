@@ -13,17 +13,6 @@ const SearchBox = () => {
   const navigate = useNavigate();
   const [inputValue, setInputValue] = useState();
 
-  const { transcript, listening, browserSupportsSpeechRecognition } =
-    useSpeechRecognition();
-  useEffect(() => {
-    if (transcript === '') return;
-    setInputValue(transcript);
-  }, [transcript]);
-
-  if (!browserSupportsSpeechRecognition) {
-    return <span>Browser doesn't support speech recognition.</span>;
-  }
-
   const changeInputValue = (e) => {
     setInputValue(e.target.value);
   };
@@ -36,6 +25,18 @@ const SearchBox = () => {
     if (e.key !== 'Enter') return;
     navigate(`/search/${inputValue}`);
   };
+
+  const { transcript, listening, browserSupportsSpeechRecognition } =
+    useSpeechRecognition();
+  useEffect(() => {
+    if (transcript === '') return;
+    setInputValue(transcript);
+  }, [transcript]);
+
+  if (!browserSupportsSpeechRecognition) {
+    return <span>Browser doesn't support speech recognition.</span>;
+  }
+
   return (
     <div className={styles.search_box}>
       <FontAwesomeIcon
