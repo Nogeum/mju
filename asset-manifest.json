@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/mju/static/css/main.66fbbfed.css",
-    "main.js": "/mju/static/js/main.34bf1920.js",
+    "main.js": "/mju/static/js/main.2324f939.js",
     "static/media/event1.jpg": "/mju/static/media/event1.1bf58e62a5a3af2ecdd6.jpg",
     "static/media/event4.jpg": "/mju/static/media/event4.cdff6316a8a44e58bc4e.jpg",
     "static/media/qt.jpeg": "/mju/static/media/qt.cac97a0572067522b6f9.jpeg",
@@ -11,7 +11,7 @@
     "static/media/pizza.png": "/mju/static/media/pizza.238cefb4b78c1937f5a8.png",
     "static/media/bibimbap.png": "/mju/static/media/bibimbap.64e1a80298265ab71c43.png",
     "static/media/korean-bbq.png": "/mju/static/media/korean-bbq.0ededc1bc0fffb2a2ab4.png",
-    "static/media/tteokbokki.png": "/mju/static/media/tteokbokki.15e7c42acddd56f273e0.png",
+    "static/media/tteokbokki.png": "/mju/static/media/tteokbokki.75d1377ebb5e00874b11.png",
     "static/media/buns.png": "/mju/static/media/buns.ebacfc38bc34b465c918.png",
     "static/media/meat.png": "/mju/static/media/meat.9e5483944ada40b94f84.png",
     "static/media/ramen.png": "/mju/static/media/ramen.8dd1730214ca80dca928.png",
@@ -26,10 +26,10 @@
     "static/media/slick.woff": "/mju/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/mju/index.html",
     "main.66fbbfed.css.map": "/mju/static/css/main.66fbbfed.css.map",
-    "main.34bf1920.js.map": "/mju/static/js/main.34bf1920.js.map"
+    "main.2324f939.js.map": "/mju/static/js/main.2324f939.js.map"
   },
   "entrypoints": [
     "static/css/main.66fbbfed.css",
-    "static/js/main.34bf1920.js"
+    "static/js/main.2324f939.js"
   ]
 }
