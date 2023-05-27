@@ -1,12 +1,12 @@
 {
   "files": {
     "main.css": "/mju/static/css/main.66fbbfed.css",
-    "main.js": "/mju/static/js/main.5632b9da.js",
-    "static/media/event1.jpeg": "/mju/static/media/event1.ed042a64ecfe32dec8d3.jpeg",
-    "static/media/event4.jpeg": "/mju/static/media/event4.c9939ada7cbf8631955b.jpeg",
-    "static/media/event3.jpeg": "/mju/static/media/event3.0d6d3c929db22e53ee74.jpeg",
-    "static/media/event2.jpeg": "/mju/static/media/event2.b86adb6b3eafd9708d83.jpeg",
+    "main.js": "/mju/static/js/main.34bf1920.js",
+    "static/media/event1.jpg": "/mju/static/media/event1.1bf58e62a5a3af2ecdd6.jpg",
+    "static/media/event4.jpg": "/mju/static/media/event4.cdff6316a8a44e58bc4e.jpg",
     "static/media/qt.jpeg": "/mju/static/media/qt.cac97a0572067522b6f9.jpeg",
+    "static/media/event3.jpg": "/mju/static/media/event3.1071079032def4f86b1b.jpg",
+    "static/media/event2.jpg": "/mju/static/media/event2.d8ee68cc688e7e988023.jpg",
     "static/media/title.png": "/mju/static/media/title.ea0f9e746dc2ef66076d.png",
     "static/media/pizza.png": "/mju/static/media/pizza.238cefb4b78c1937f5a8.png",
     "static/media/bibimbap.png": "/mju/static/media/bibimbap.64e1a80298265ab71c43.png",
@@ -26,10 +26,10 @@
     "static/media/slick.woff": "/mju/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/mju/index.html",
     "main.66fbbfed.css.map": "/mju/static/css/main.66fbbfed.css.map",
-    "main.5632b9da.js.map": "/mju/static/js/main.5632b9da.js.map"
+    "main.34bf1920.js.map": "/mju/static/js/main.34bf1920.js.map"
   },
   "entrypoints": [
     "static/css/main.66fbbfed.css",
-    "static/js/main.5632b9da.js"
+    "static/js/main.34bf1920.js"
   ]
 }
