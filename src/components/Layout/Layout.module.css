@@ -1,0 +1,13 @@
+.main {
+  width: 48rem;
+  min-height: 100vh;
+  background-color: white;
+  margin: auto;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 768px) {
+  .main {
+    width: 100%;
+  }
+}

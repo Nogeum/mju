@@ -1,0 +1,12 @@
+.reels_container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-top: 7.8rem;
+}
+
+@media screen and (max-width: 768px) {
+  .reels_container {
+    margin-top: 7.2rem;
+  }
+}

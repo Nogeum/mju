@@ -1,0 +1,9 @@
+.list_container {
+  margin-top: 10rem;
+}
+
+@media screen and (max-width: 768px) {
+  .list_container {
+    margin-top: 7.2rem;
+  }
+}

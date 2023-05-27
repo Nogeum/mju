@@ -1,0 +1,46 @@
+.mainpage_container {
+  margin-top: 7.3rem;
+}
+.search_container {
+  padding: 2rem 2.8rem;
+  /* background-color: rgb(215, 104, 89); */
+}
+
+.carousel_item {
+  outline: none;
+  width: 100%;
+  cursor: pointer;
+}
+
+.test_image {
+  width: 100%;
+}
+
+.recommend_container {
+  padding: 7rem 1rem;
+}
+
+.recommend_container h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1.4rem;
+  margin-left: calc(0.5% + 0.5rem);
+}
+
+.recommend_list {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+}
+@media screen and (max-width: 768px) {
+  .mainpage_container {
+    margin-top: 7.2rem;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .search_container {
+    padding: 2rem 1.5rem;
+  }
+}

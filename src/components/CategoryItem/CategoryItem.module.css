@@ -1,0 +1,47 @@
+.item {
+  width: 19.5%;
+  margin: 1rem 0.25%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+.item img {
+  width: 8rem;
+  height: 8rem;
+  border-radius: 10px;
+}
+
+.title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-top: 0.4rem;
+}
+
+@media screen and (max-width: 620px) {
+  .item {
+    width: 24%;
+    margin: 0.5%;
+  }
+
+  .item img {
+    width: 7rem;
+    height: 7rem;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .item {
+    width: 32%;
+    margin: 0.65%;
+  }
+}
+
+@media screen and (max-width: 260px) {
+  .item {
+    width: 49.5%;
+    margin: 0.5rem 0.25%;
+  }
+}

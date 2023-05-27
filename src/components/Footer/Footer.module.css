@@ -1,0 +1,33 @@
+.footer {
+  width: 48rem;
+  position: fixed;
+  bottom: 0;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 5rem;
+  box-shadow: 0 -3px 3px rgba(219, 219, 219, 0.3);
+}
+
+.footer button {
+  background-color: transparent;
+  border: none;
+  font-size: 2.2rem;
+  cursor: pointer;
+  padding: 1.2rem 1rem;
+  text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+  .footer {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .footer {
+    padding: 0 3rem;
+  }
+}

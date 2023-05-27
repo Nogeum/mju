@@ -1,0 +1,15 @@
+.container {
+  width: 32.93%;
+  margin: 0.2%;
+  cursor: pointer;
+}
+
+.container:hover {
+  transform: scale(1.02);
+  transition: 120ms all ease-in;
+}
+
+.img {
+  width: 100%;
+  aspect-ratio: 1/1;
+}
