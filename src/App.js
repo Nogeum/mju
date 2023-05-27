@@ -1,6 +1,6 @@
 import styles from './App.module.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Mainpage from './components/mainpage/Mainpage';
+import Mainpage from './components/Mainpage/Mainpage';
 import ListItem from './components/ListItem/ListItem';
 import LoginPage from './components/LoginPage/LoginPage';
 import DetailPage from './components/DetailPage/DetailPage';

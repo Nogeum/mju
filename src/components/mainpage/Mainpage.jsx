@@ -10,6 +10,10 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import { useState } from 'react';
 import axios from 'axios';
+import event1 from '../../img/event1.jpeg';
+import event2 from '../../img/event2.jpeg';
+import event3 from '../../img/event3.jpeg';
+import event4 from '../../img/event4.jpeg';
 
 const Mainpage = () => {
   const [recList, setRecList] = useState([]);
@@ -40,32 +44,16 @@ const Mainpage = () => {
         <div className={styles.carousel_container}>
           <Slider {...settings}>
             <div className={styles.carousel_item}>
-              <img
-                src='https://yaimg.yanolja.com/v5/2023/04/03/16/642af8ffa5e115.86468612.png'
-                alt=''
-                className={styles.test_image}
-              />
+              <img src={event1} alt='' className={styles.test_image} />
             </div>
             <div className={styles.carousel_item}>
-              <img
-                src='https://yaimg.yanolja.com/v5/2023/04/03/16/642af8ffa5e115.86468612.png'
-                alt=''
-                className={styles.test_image}
-              />
+              <img src={event2} alt='' className={styles.test_image} />
             </div>
             <div className={styles.carousel_item}>
-              <img
-                src='https://yaimg.yanolja.com/v5/2023/04/03/16/642af8ffa5e115.86468612.png'
-                alt=''
-                className={styles.test_image}
-              />
+              <img src={event3} alt='' className={styles.test_image} />
             </div>
             <div className={styles.carousel_item}>
-              <img
-                src='https://yaimg.yanolja.com/v5/2023/04/03/16/642af8ffa5e115.86468612.png'
-                alt=''
-                className={styles.test_image}
-              />
+              <img src={event4} alt='' className={styles.test_image} />
             </div>
           </Slider>
         </div>
