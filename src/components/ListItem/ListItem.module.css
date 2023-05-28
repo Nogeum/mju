@@ -1,5 +1,6 @@
 .list_container {
   margin-top: 10rem;
+  margin-bottom: 5rem;
 }
 
 @media screen and (max-width: 768px) {

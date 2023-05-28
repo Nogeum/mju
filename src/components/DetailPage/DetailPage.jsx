@@ -10,9 +10,11 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import DetailReview from '../DetailReview/DetailReview';
 import axios from 'axios';
+import Detailinfo from '../DetailInfo/Detailinfo';
+import DetailMenu from '../DetailMenu/DetailMenu';
 
 const DetailPage = () => {
-  const [dataList, setDataList] = useState([]);
+  const [dataList, setDataList] = useState();
   const [selected, setSelected] = useState('menu');
   const changeSelectedValue = (value) => {
     setSelected(value);
@@ -23,7 +25,7 @@ const DetailPage = () => {
     const ID = param.id;
     console.log('NEW', ID);
     axios
-      .get(`RestaurantInfo?searchID=${ID}`)
+      .get(`/RestaurantInfo?searchID=${ID}`)
       .then((response) => setDataList(response.data))
       .catch((err) => console.error(err));
   };
@@ -43,7 +45,8 @@ const DetailPage = () => {
       'https://lh5.googleusercontent.com/p/AF1QipPLQvNOR_LF2bODDQAz2LaUEOliOOgFy6LZuIcF=w408-h306-k-no',
     rating: 5,
   };
-
+  console.log(dataList);
+  console.log(dataList.infoMenu);
   return (
     <Layout>
       <Header />
@@ -57,15 +60,14 @@ const DetailPage = () => {
             <div className={styles.filter}></div>
           </div>
           <div className={styles.data_container}>
-            <p className={styles.title}>{dataList.NAME}</p>
-            <p className={styles.title}>{dataList.TIME}</p>
-            {/* <ReactStars
-            className={styles.star}
-            count={5}
-            value={dummyData.rating}
-            edit={false}
-            size={20}
-          /> */}
+            <p className={styles.title}>{dummyData.title}</p>
+            <ReactStars
+              className={styles.star}
+              count={5}
+              value={dummyData.rating}
+              edit={false}
+              size={20}
+            />
             <div className={styles.container}>
               <button
                 className={`${
@@ -100,9 +102,12 @@ const DetailPage = () => {
             </div>
             <div className={styles.contents_container}>
               {selected === 'menu' ? (
-                <></>
+                <DetailMenu
+                  main={dataList.infoMenu.MAINMENU}
+                  price={dataList.infoMenuPrice.MAINPRICE}
+                />
               ) : selected === 'info' ? (
-                <p className=''>정보입니다</p>
+                <Detailinfo />
               ) : (
                 <DetailReview />
               )}
@@ -110,6 +115,7 @@ const DetailPage = () => {
           </div>
         </div>
       )}
+      <Footer />
     </Layout>
   );
 };

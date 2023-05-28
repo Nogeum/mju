@@ -58,7 +58,7 @@ const ListItem = () => {
     const category = param.category;
     console.log('NEW', category);
     axios
-      .get(`searchRestaurant?searchValue=${category}`)
+      .get(`/searchRestaurant?searchValue=${category}`)
       .then((response) => setDataList(response.data))
       .catch((err) => console.error(err));
   };

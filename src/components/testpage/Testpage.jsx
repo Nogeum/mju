@@ -1,9 +1,9 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
-import styles from './DetailReview.module.css';
+import styles from './Testpage.module.css';
 import { useParams } from 'react-router-dom';
 
-export default function DetailReview() {
+export default function Testpage() {
   const [inputValue, setInputValue] = useState();
 
   const changeInputValue = (e) => {
@@ -20,20 +20,20 @@ export default function DetailReview() {
       });
   };
 
-  const param = useParams();
+  //   const param = useParams();
   const [dataList, setDataList] = useState([]);
-  const loadData = () => {
-    const category = param.category;
-    console.log('NEW', category);
-    axios
-      .get('/api/images')
-      .then((response) => setDataList(response.data))
-      .catch((err) => console.error(err));
-  };
+  //   const loadData = () => {
+  //   const category = param.category;
+  //   console.log('NEW', category);
+  axios
+    .get('/api/images')
+    .then((response) => setDataList(response.data))
+    .catch((err) => console.error(err));
+  //   };
 
-  useEffect(() => {
-    loadData();
-  }, [param.category]);
+  //   useEffect(() => {
+  //     loadData();
+  //   }, [param.category]);
 
   return (
     <>
@@ -48,6 +48,7 @@ export default function DetailReview() {
         <button className={styles.button} onClick={sendData}>
           리뷰 쓰기
         </button>
+        <p>testline</p>
         <section className={styles.section}>
           {dataList.map((dataList) => (
             <>

@@ -1,0 +1,15 @@
+.info {
+  width: 40rem;
+  height: 10rem;
+  background-color: aquamarine;
+  margin: auto;
+}
+.info_title {
+  font-size: large;
+  margin-bottom: 0.5rem;
+}
+.border {
+  border-top-width: 1px !important;
+  border-top-style: solid !important;
+  border-top-color: rgb(221, 221, 221);
+}
