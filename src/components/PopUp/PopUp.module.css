@@ -8,12 +8,60 @@
   z-index: 100;
 }
 .popup {
-  width: 50rem;
-  height: 50rem;
+  width: 45rem;
   border-radius: 16px;
   background-color: white;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+.close {
+  color: white;
+  background: none;
+  border: none;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+.xmark {
+  font-size: large;
+  cursor: pointer;
+}
+.popup_container {
+  width: 100%;
+}
+.popup_header {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1rem;
+}
+.userId {
+  font-size: 2rem;
+  font-weight: 900;
+  padding: 0.5rem 0;
+}
+.rate {
+  padding: 0.5rem 0;
+}
+
+.popup_contents {
+  width: 100%;
+}
+.img {
+  width: 100%;
+  height: 35rem;
+  margin-top: 0.6rem;
+  aspect-ratio: 1/1;
+}
+.contents {
+  font-size: 1.3rem;
+  padding: 0 1%;
+  padding-bottom: 2%;
+}
+
+@media screen and (max-width: 480px) {
+  .popup {
+    width: 70%;
+  }
 }

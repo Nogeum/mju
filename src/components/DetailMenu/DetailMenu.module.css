@@ -1,0 +1,28 @@
+.container1 {
+  width: 100%;
+  padding: 2rem;
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+  justify-content: space-between;
+  cursor: pointer;
+  border-bottom: 1px solid lightgray;
+}
+
+.image {
+  width: 11rem;
+  height: 11rem;
+  border-radius: 12px;
+  border: 1px solid lightgray;
+}
+
+.container2 {
+  padding: 0.4rem 1.4rem;
+  font-size: 1.3rem;
+  /* border-bottom: 1px solid rgba(0, 0, 0, 0.2); */
+}
+
+.name {
+  font-size: 1.8rem;
+  font-weight: 700;
+}

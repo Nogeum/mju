@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './DetailInfo.module.css';
 import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 
-export default function Detailinfo() {
+export default function Detailinfo({ name, time, loc, num, map }) {
   const dummy = [
     {
       name: '명지대학교 제 5공학관',
@@ -11,7 +11,7 @@ export default function Detailinfo() {
     },
   ];
   const containerStyle = {
-    width: '40rem',
+    width: '95%',
     height: '40rem',
     margin: 'auto',
     marginTop: '2rem',
@@ -22,14 +22,15 @@ export default function Detailinfo() {
     <div>
       <div className={styles.info}>
         <p className={styles.info_title}>영업 정보</p>
-        <p className={styles.font}>상호명 : {dummy[0].name}</p>
-        <p className={styles.font}>운영시간 : {dummy[0].time}</p>
-        <p className={styles.font}>위치 : {dummy[0].location}</p>
+        <p className={styles.font}>상호명 : {name}</p>
+        <p className={styles.font}>운영시간 : {time}</p>
+        <p className={styles.font}>전화번호 : {num}</p>
+        <p className={styles.font}>위치 : {loc}</p>
       </div>
       <div className={styles.border}></div>
       <LoadScript googleMapsApiKey='AIzaSyApDkK3ksEJAT6v0BTqNW3OeaZJ8NcgxSo'>
-        <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={20}>
-          <Marker position={center} />
+        <GoogleMap mapContainerStyle={containerStyle} center={map} zoom={19}>
+          <Marker position={map} />
         </GoogleMap>
       </LoadScript>
     </div>

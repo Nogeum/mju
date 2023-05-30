@@ -69,9 +69,11 @@
 .icon {
   font-size: 1.6rem;
 }
-.find_id {
-  margin-left: 23rem;
+.find_container {
   margin-top: 1rem;
+  text-align: end;
+}
+.find_id {
   border: none;
   background-color: white;
   cursor: pointer;
@@ -143,5 +145,8 @@
   .submit_button {
     width: 90%;
     font-size: 1.8rem;
+  }
+  .signup_container {
+    width: calc(100% - 1.5rem);
   }
 }

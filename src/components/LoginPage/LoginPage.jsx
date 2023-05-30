@@ -68,7 +68,7 @@ const LoginPage = () => {
               type='password'
             />
           </div>
-          <div>
+          <div className={styles.find_container}>
             <button className={styles.find_id}>아이디/</button>
             <button className={styles.find_pw}>비밀번호찾기</button>
           </div>

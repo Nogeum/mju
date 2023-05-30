@@ -1,5 +1,5 @@
 {
-  "proxy": "http://13.125.223.5:8085/",
+  "proxy": "http://13.124.217.240:8085/",
   "homepage": "https://nogeum.github.io/mju",
   "name": "mju",
   "version": "0.1.0",

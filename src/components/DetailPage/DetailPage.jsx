@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react';
 import styles from './DetailPage.module.css';
 import Layout from '../Layout/Layout';
 import ReactStars from 'react-stars';
-import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import Header from '../Header/Header';
@@ -12,10 +11,23 @@ import DetailReview from '../DetailReview/DetailReview';
 import axios from 'axios';
 import Detailinfo from '../DetailInfo/Detailinfo';
 import DetailMenu from '../DetailMenu/DetailMenu';
+import Slider from 'react-slick';
+import qt from '../../img/qt.jpeg';
 
 const DetailPage = () => {
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 300,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+  };
   const [dataList, setDataList] = useState();
+  const [src, setSrc] = useState();
+  const [src2, setSrc2] = useState();
   const [selected, setSelected] = useState('menu');
+
   const changeSelectedValue = (value) => {
     setSelected(value);
   };
@@ -26,7 +38,15 @@ const DetailPage = () => {
     console.log('NEW', ID);
     axios
       .get(`/RestaurantInfo?searchID=${ID}`)
-      .then((response) => setDataList(response.data))
+      .then((response) => {
+        setDataList(response.data);
+        setSrc(
+          `https://bucket123478.s3.ap-northeast-2.amazonaws.com/RestaurantPhoto/${response.data.info.ID}_2.jpg`
+        );
+        setSrc2(
+          `https://bucket123478.s3.ap-northeast-2.amazonaws.com/RestaurantPhoto/${response.data.info.ID}_3.jpg`
+        );
+      })
       .catch((err) => console.error(err));
   };
 
@@ -39,32 +59,28 @@ const DetailPage = () => {
   };
   // id값 가지고 서버에 요청 보내는 함수 작성
 
-  const dummyData = {
-    title: '교촌 치킨',
-    image:
-      'https://lh5.googleusercontent.com/p/AF1QipPLQvNOR_LF2bODDQAz2LaUEOliOOgFy6LZuIcF=w408-h306-k-no',
-    rating: 5,
-  };
   console.log(dataList);
-  console.log(dataList.infoMenu);
   return (
     <Layout>
       <Header />
-      {dataList && (
+      {dataList && src && (
         <div className={styles.all_container}>
           <div className={styles.image_container}>
             <button className={styles.backIcon} onClick={moveToListPage}>
               <FontAwesomeIcon icon={faArrowLeft} />
             </button>
-            <img src={dummyData.image} alt='' className={styles.image} />
+            <Slider {...settings}>
+              <img src={src} alt='list_image' className={styles.image} />
+              <img src={src2} alt='list_image' className={styles.image} />
+            </Slider>
             <div className={styles.filter}></div>
           </div>
           <div className={styles.data_container}>
-            <p className={styles.title}>{dummyData.title}</p>
+            <p className={styles.title}>{dataList.info.NAME}</p>
             <ReactStars
               className={styles.star}
               count={5}
-              value={dummyData.rating}
+              value={dataList.infoRate.RATE}
               edit={false}
               size={20}
             />
@@ -107,9 +123,15 @@ const DetailPage = () => {
                   price={dataList.infoMenuPrice.MAINPRICE}
                 />
               ) : selected === 'info' ? (
-                <Detailinfo />
+                <Detailinfo
+                  name={dataList.info.NAME}
+                  time={dataList.info.TIME}
+                  loc={dataList.info.LOCATION}
+                  map={dataList.infoMap}
+                  num={dataList.info.NUMBER}
+                />
               ) : (
-                <DetailReview />
+                <DetailReview name={dataList.info.NAME} />
               )}
             </div>
           </div>

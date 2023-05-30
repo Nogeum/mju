@@ -7,13 +7,46 @@
   height: 120px;
   padding: 0.4rem 1rem;
   resize: none;
-  margin: 0 1.05rem;
-  margin-top: 0.4rem;
+  margin: 0 2.5%;
+  margin-top: 1rem;
+  box-sizing: border-box;
 }
 .button {
-  margin-left: 1.05rem;
+  margin-left: 2.5%;
+  margin-bottom: 2rem;
+}
+.total {
+  font-size: 2rem;
+  font-weight: 900;
+  border-top-width: 1px !important;
+  border-top-style: solid !important;
+  border-top-color: rgb(221, 221, 221);
+  padding: 2rem 0;
+  padding-left: 1.5rem;
 }
 .section {
-  width: 40rem;
-  height: 40rem;
+  width: 100%;
+}
+.review_container3 {
+  width: 100%;
+  padding: 1.5rem;
+  border-top-width: 1px !important;
+  border-top-style: solid !important;
+  border-top-color: rgb(221, 221, 221);
+}
+.id {
+  font-size: 2rem;
+  font-weight: 900;
+}
+
+.img {
+  margin-top: 0.6rem;
+  width: 100%;
+  aspect-ratio: 1/1;
+  border-radius: 8px;
+}
+
+.contents {
+  font-size: 1.5rem;
+  margin-top: 0.6rem;
 }
