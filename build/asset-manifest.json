@@ -1,0 +1,35 @@
+{
+  "files": {
+    "main.css": "/mju/static/css/main.41194f6b.css",
+    "main.js": "/mju/static/js/main.1bce2002.js",
+    "static/media/event1.jpg": "/mju/static/media/event1.1bf58e62a5a3af2ecdd6.jpg",
+    "static/media/event4.jpg": "/mju/static/media/event4.cdff6316a8a44e58bc4e.jpg",
+    "static/media/qt.jpeg": "/mju/static/media/qt.cac97a0572067522b6f9.jpeg",
+    "static/media/event3.jpg": "/mju/static/media/event3.1071079032def4f86b1b.jpg",
+    "static/media/event2.jpg": "/mju/static/media/event2.d8ee68cc688e7e988023.jpg",
+    "static/media/bibimbap.png": "/mju/static/media/bibimbap.2896337bf4cf8e08ae7e.png",
+    "static/media/title.png": "/mju/static/media/title.ea0f9e746dc2ef66076d.png",
+    "static/media/pizza.png": "/mju/static/media/pizza.238cefb4b78c1937f5a8.png",
+    "static/media/tteokbokki.png": "/mju/static/media/tteokbokki.75d1377ebb5e00874b11.png",
+    "static/media/buns.png": "/mju/static/media/buns.ebacfc38bc34b465c918.png",
+    "static/media/burger.png": "/mju/static/media/burger.ed59f72aa43a4900b2d3.png",
+    "static/media/korean-bbq.png": "/mju/static/media/korean-bbq.9e5483944ada40b94f84.png",
+    "static/media/meat.png": "/mju/static/media/meat.3b44030f7e1c975d3ec4.png",
+    "static/media/ramen.png": "/mju/static/media/ramen.020dc64589558352261c.png",
+    "static/media/coffee.png": "/mju/static/media/coffee.ba2131ad61da53705abd.png",
+    "static/media/bap.png": "/mju/static/media/bap.3776f727f4c41902b78f.png",
+    "static/media/soju.png": "/mju/static/media/soju.1fb85ac8700dcdd989e6.png",
+    "static/media/chicken.png": "/mju/static/media/chicken.bd0f911fddcff65605fe.png",
+    "static/media/slick.svg": "/mju/static/media/slick.2630a3e3eab21c607e21.svg",
+    "static/media/slick.eot": "/mju/static/media/slick.a4e97f5a2a64f0ab1323.eot",
+    "static/media/slick.ttf": "/mju/static/media/slick.c94f7671dcc99dce43e2.ttf",
+    "static/media/slick.woff": "/mju/static/media/slick.295183786cd8a1389865.woff",
+    "index.html": "/mju/index.html",
+    "main.41194f6b.css.map": "/mju/static/css/main.41194f6b.css.map",
+    "main.1bce2002.js.map": "/mju/static/js/main.1bce2002.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.41194f6b.css",
+    "static/js/main.1bce2002.js"
+  ]
+}
