@@ -6,6 +6,7 @@ import axios from 'axios';
 import Footer from '../Footer/Footer';
 
 const SignUp = (props) => {
+  const [code, setCode] = useState();
   const [formData, setFormData] = useState({
     email: '',
     cerNum: '',
@@ -32,8 +33,8 @@ const SignUp = (props) => {
       alert('올바른 이메일을 입력해주세요.');
       return;
     }
-    if (domain !== 'mju.ac.kr') {
-      alert('명지대학교 이메일로만 가입 가능합니다.');
+    if (domain !== 'naver.com') {
+      alert('네이버 이메일로만 가입 가능합니다.');
       return false;
     }
 
@@ -42,6 +43,31 @@ const SignUp = (props) => {
 
   const sendCertNum = () => {
     if (!checkValidEmail()) return;
+    axios
+      .post('http://13.125.132.197:8082/api/mailConfirm', { email })
+      .then((res) => {
+        console.log(res.data);
+        console.log('인증번호발송');
+        alert('인증번호 발송');
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const checkCerNum = () => {
+    axios
+      .get('13.125.132.197:8082/api/mailConfirm')
+      .then((res) => {
+        console.log('서버로부터 인증번호 불러오기 성공');
+        setCode(res.data);
+      })
+      .catch((err) => console(err));
+    if (cerNum === code) {
+      alert('인증완료');
+      return true;
+    } else {
+      alert('인증번호가 일치하지 않습니다.');
+      return false;
+    }
   };
 
   const onSubmitHandler = (e) => {
@@ -94,7 +120,9 @@ const SignUp = (props) => {
             spellCheck='false'
             placeholder='인증번호'
           />
-          <button type='button'>인증확인</button>
+          <button onClick={checkCerNum} type='button'>
+            인증확인
+          </button>
         </div>
         <div className={styles.input_with_button}>
           <input
