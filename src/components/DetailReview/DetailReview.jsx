@@ -1,20 +1,44 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import styles from './DetailReview.module.css';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import ReactStars from 'react-stars';
 
-export default function DetailReview({ name }) {
-  //리뷰 제출
-  const [inputValue, setInputValue] = useState();
+export default function DetailReview({ name, restid }) {
+  // 쿠키
+  const navigate = useNavigate();
+  // const moveToListPage = () => navigate('/login');
+  const [state, setState] = useState(false);
+  const loadData2 = () => {
+    axios
+      .get('')
+      .then((res) => {
+        console.log(res.data);
+        setState(true);
+      })
+      .catch((err) => console.log(err));
+  };
+  useEffect(() => {
+    loadData2();
+  }, []);
 
-  const changeInputValue = (e) => {
-    setInputValue(e.target.value);
+  // 별점입력 및  유지
+  const [rate, setRate] = useState();
+  const ratingChanged = (newRating) => {
+    setRate(newRating);
+  };
+
+  //리뷰 제출
+  const [content, setContent] = useState();
+
+  const changeContent = (e) => {
+    setContent(e.target.value);
   };
   const sendData = () => {
     axios
       .post('', {
-        inputValue,
+        restid,
+        content,
       })
       .then((response) => console.log(response.data))
       .catch((Error) => {
@@ -59,6 +83,10 @@ export default function DetailReview({ name }) {
   };
   //사진+나머지 전송
   const allSend = () => {
+    if (!rate || !content) {
+      alert('별점기입 혹은 리뷰를 작성해주세요');
+      return;
+    }
     sendData();
     onClickSend();
   };
@@ -80,27 +108,44 @@ export default function DetailReview({ name }) {
 
   useEffect(() => {
     loadData();
+    loadData2();
   }, [param.category]);
 
   return (
     <>
       <div className={styles.review_container}>
-        <textarea
-          onChange={changeInputValue}
-          value={inputValue}
-          className={styles.review_container2}
-          spellCheck='false'
-          placeholder='솔직한 리뷰를 남겨보세요.'
-        ></textarea>
-        <input
-          type='file'
-          id='profile-upload'
-          accept='image/*'
-          onChange={onChangeImg}
-        />
-        <button className={styles.button} onClick={allSend}>
-          작성완료
-        </button>
+        {state ? (
+          <div className={styles.edit_container}>
+            <ReactStars
+              className={styles.rate}
+              count={5}
+              onChange={ratingChanged}
+              size={20}
+              value={rate}
+            />
+            <input
+              type='file'
+              id='profile-upload'
+              accept='image/*'
+              onChange={onChangeImg}
+            />
+            <textarea
+              onChange={changeContent}
+              value={content}
+              className={styles.review_container2}
+              spellCheck='false'
+              placeholder='솔직한 리뷰를 남겨보세요.'
+            ></textarea>
+            <button className={styles.button} onClick={allSend}>
+              작성완료
+            </button>
+          </div>
+        ) : (
+          <div className={styles.login_container}>
+            <p className={styles.login_font}>로그인 시 리뷰작성 가능합니다.</p>
+            <button className={styles.login_button}>로그인</button>
+          </div>
+        )}
         <p className={styles.total}>최근 리뷰 ({dataList.length})</p>
         <section className={styles.section}>
           {dataList.map((dataList) => (

@@ -1,6 +1,27 @@
 .review_container {
   width: 100%;
 }
+.login_container {
+  width: 100%;
+  text-align: center;
+}
+.login_font {
+  text-align: center;
+}
+.login_button {
+  width: 16rem;
+  height: 4.5rem;
+  background-color: rgb(215, 104, 89);
+  color: white;
+  text-align: center;
+  font-size: 2.2rem;
+  font-weight: 700;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  margin-top: 4rem;
+  cursor: pointer;
+}
 .review_container2 {
   font-family: 'Noto Sans KR', sans-serif;
   width: 95%;

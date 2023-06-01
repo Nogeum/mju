@@ -1,42 +1,48 @@
-import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import styles from './Testpage.module.css';
+import ReactStars from 'react-stars';
+import { useParams } from 'react-router-dom';
+import qt from '../../img/qt.jpeg';
 
 export default function Testpage() {
-  const onChangeImg = (e) => {
-    e.preventDefault();
-    if (e.target.files) {
-      const uploadFile = e.target.files[0];
-      const formData = new FormData();
+  // const par = useParams();
 
-      formData.append('multipartFileList', uploadFile);
-
-      axios
-        .post('http://52.79.243.153:8082/api/upload', formData, {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-          },
-        })
-        .then((response) => {
-          console.log(response.data);
-        })
-        .catch((error) => {
-          console.log(error.response.data);
-        });
+  const [rate, setRate] = useState();
+  console.log(rate);
+  const ratingChanged = (newRating) => {
+    setRate(newRating);
+  };
+  const checkReview = () => {
+    if (!rate || !content) {
+      alert('별점기입 혹은 리뷰를 작성해주세요');
     }
   };
-
+  const [content, setContent] = useState('');
+  const changeContent = (e) => {
+    setContent(e.target.value);
+  };
   return (
     <>
-      <form>
-        <label htmlFor='profile-upload' />
-        <input
-          type='file'
-          id='profile-upload'
-          accept='image/*'
-          onChange={onChangeImg}
-        />
-      </form>
+      <textarea onChange={changeContent} value={content}></textarea>
+      <ReactStars
+        className={styles.rate}
+        count={5}
+        onChange={ratingChanged}
+        size={20}
+        value={rate}
+      />
+      <button onClick={checkReview}>제출</button>
+      <p>{rate}</p>
+      {/* <p>{par}</p> */}
+      <img src={qt} alt='' />
+      <img src={qt} alt='' />
+      <img src={qt} alt='' />
+      <img src={qt} alt='' />
+      <img src={qt} alt='' />
+      <img src={qt} alt='' />
+      <img src={qt} alt='' />
+      <img src={qt} alt='' />
+      <img src={qt} alt='' />
     </>
   );
 }

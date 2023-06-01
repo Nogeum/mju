@@ -8,7 +8,18 @@
   cursor: pointer;
   border-bottom: 1px solid lightgray;
 }
-
+.mainmenu {
+  font-size: large;
+  font-weight: 800;
+  text-align: center;
+  padding: 1rem 0;
+}
+.sidemenu {
+  font-size: large;
+  font-weight: 800;
+  text-align: center;
+  padding: 1rem 0;
+}
 .image {
   width: 11rem;
   height: 11rem;

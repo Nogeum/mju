@@ -7,6 +7,8 @@ import SignUp from './components/SignUp/SignUp';
 import Reels from './components/Reels/Reels';
 import Testpage from './components/testpage/Testpage';
 import User from './components/User/User';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 function App() {
   return (
@@ -22,6 +24,7 @@ function App() {
           <Route path='/signup' element={<SignUp />}></Route>
           <Route path='/reels' element={<Reels />}></Route>
           <Route path='/search/:category' element={<ListItem />}></Route>
+          {/* <Route path='/user/:id' element={<User/>}></Route> */}
         </Routes>
       </BrowserRouter>
     </div>

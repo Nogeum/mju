@@ -121,6 +121,8 @@ const DetailPage = () => {
                 <DetailMenu
                   main={dataList.infoMenu.MAINMENU}
                   price={dataList.infoMenuPrice.MAINPRICE}
+                  side={dataList.infoMenu.SIDEMENU}
+                  price2={dataList.infoMenuPrice.SIDEPRICE}
                 />
               ) : selected === 'info' ? (
                 <Detailinfo
@@ -131,7 +133,7 @@ const DetailPage = () => {
                   num={dataList.info.NUMBER}
                 />
               ) : (
-                <DetailReview name={dataList.info.NAME} />
+                <DetailReview name={dataList.info.NAME} restid={param.id} />
               )}
             </div>
           </div>
