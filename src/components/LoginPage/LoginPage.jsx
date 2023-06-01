@@ -13,17 +13,19 @@ const LoginPage = () => {
 
   const [userId, setUserId] = useState('');
   const [userPw, setPw] = useState('');
-  const [userState, setUserState] = useState(false); // 유저 로그인 상태
 
   const moveToMainPage = () => {
     navigate('/');
+  };
+  const moveToSignUpPage = () => {
+    navigate('/signup');
   };
 
   const changeUserId = (e) => {
     setUserId(e.target.value);
   };
 
-  const ChangePw = (e) => {
+  const changePw = (e) => {
     setPw(e.target.value);
   };
 
@@ -31,16 +33,17 @@ const LoginPage = () => {
     e.preventDefault();
 
     axios
-      .post('/api/login', { userId, userPw })
-      .then((response) => console.log(response.data))
-      .catch((Error) => {
-        console.log(Error.response.data);
+      .post('http://52.79.235.187:8082/api/login', { userId, userPw })
+      .then((res) => {
+        console.log(res.data);
+        localStorage.setItem('state', 'check');
+        alert('환영합니다!');
+        moveToMainPage();
+      })
+      .catch((err) => {
+        alert('입력 정보를 다시 확인해주세요.');
+        return;
       });
-
-    console.log('로그인 요청');
-  };
-  const moveToSignUpPage = () => {
-    navigate('/signup');
   };
 
   return (
@@ -62,7 +65,7 @@ const LoginPage = () => {
           <div className={`${styles.input_box} ${styles.bottom}`}>
             <FontAwesomeIcon icon={faLock} className={styles.icon} />
             <input
-              onChange={ChangePw}
+              onChange={changePw}
               spellCheck='false'
               placeholder='비밀번호'
               type='password'

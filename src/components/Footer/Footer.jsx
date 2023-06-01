@@ -10,27 +10,30 @@ import axios from 'axios';
 import { faLock } from '@fortawesome/free-solid-svg-icons';
 
 export default function Footer() {
-  // const [logState, setLogState] = useState(false);
-  // const request = () => {
-  //   axios
-  //     .get('')
-  //     .then((res) => {
-  //       console.log(res.data);
-  //       setLogState(true);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err.data);
-  //     });
-  // };
-  // useEffect(() => {
-  //   request();
-  // }, []);
+  const [logState, setLogState] = useState(false);
+  const request = () => {
+    // axios
+    //   .get('')
+    //   .then((res) => {
+    //     console.log(res.data);
+    //     setLogState(true);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err.data);
+    //   });
+    const jong = localStorage.getItem('state');
+    if (jong === 'check') {
+      setLogState(true);
+    }
+  };
+  useEffect(() => {
+    request();
+  }, []);
 
   const navigate = useNavigate();
   const moveToMain = () => navigate('/');
   const moveToReels = () => navigate('/reels');
   // const moveToKeep = ()=>navigate('/keep')
-  // const moveToUser = ()=>navigate('/user')
   const moveToLogin = () => navigate('/login');
   const moveToUser = () => navigate('/user');
 
@@ -45,13 +48,15 @@ export default function Footer() {
       <button>
         <FontAwesomeIcon icon={faHeart} />
       </button>
-      {/* {logState ?       <button onClick={moveToUser}>
-      <FontAwesomeIcon icon={faUser} />
-      </button>: */}
-      <button onClick={moveToLogin}>
-        <FontAwesomeIcon icon={faLock} />
-      </button>
-      {/* } */}
+      {logState ? (
+        <button onClick={moveToUser}>
+          <FontAwesomeIcon icon={faUser} />
+        </button>
+      ) : (
+        <button onClick={moveToLogin}>
+          <FontAwesomeIcon icon={faLock} />
+        </button>
+      )}
     </div>
   );
 }
