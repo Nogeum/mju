@@ -3,24 +3,16 @@ import React, { useState, useEffect } from 'react';
 import styles from './DetailReview.module.css';
 import { useNavigate, useParams } from 'react-router-dom';
 import ReactStars from 'react-stars';
+import { CookiesProvider } from 'react-cookie';
 
 export default function DetailReview({ name, restid }) {
-  // 쿠키
   const navigate = useNavigate();
-  // const moveToListPage = () => navigate('/login');
+  const moveToLogin = () => navigate('/login');
   const [state, setState] = useState(false);
   const loadData2 = () => {
-    axios
-      .get('')
-      .then((res) => {
-        console.log(res.data);
-        setState(true);
-      })
-      .catch((err) => console.log(err));
+    const nogeum = localStorage.getItem('state');
+    if (nogeum === 'check') setState(true);
   };
-  useEffect(() => {
-    loadData2();
-  }, []);
 
   // 별점입력 및  유지
   const [rate, setRate] = useState();
@@ -29,16 +21,18 @@ export default function DetailReview({ name, restid }) {
   };
 
   //리뷰 제출
-  const [content, setContent] = useState();
+  const [contents, setContent] = useState('');
 
   const changeContent = (e) => {
     setContent(e.target.value);
   };
   const sendData = () => {
     axios
-      .post('', {
+      .post('http://52.79.235.187:8082/api/reviews', {
+        name,
         restid,
-        content,
+        contents,
+        rate,
       })
       .then((response) => console.log(response.data))
       .catch((Error) => {
@@ -48,10 +42,8 @@ export default function DetailReview({ name, restid }) {
   //리뷰 사진업로드
   const [file, setFile] = useState();
 
+  const formData = new FormData();
   const onChangeImg = (e) => {
-    e.preventDefault();
-    const formData = new FormData();
-
     if (e.target.files) {
       const uploadFile = e.target.files[0];
       formData.append('multipartFileList', uploadFile);
@@ -62,14 +54,9 @@ export default function DetailReview({ name, restid }) {
     }
   };
   // 리뷰 사진 전송
-  const onClickSend = (e) => {
-    e.preventDefault();
-    const formData = new FormData();
-
-    formData.append('multipartFileList', file);
-
+  const onClickSend = () => {
     axios
-      .post('http://52.79.243.153:8082/api/upload', formData, {
+      .post('http://52.79.235.187:8082/api/upload', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -83,7 +70,7 @@ export default function DetailReview({ name, restid }) {
   };
   //사진+나머지 전송
   const allSend = () => {
-    if (!rate || !content) {
+    if (!rate || !contents) {
       alert('별점기입 혹은 리뷰를 작성해주세요');
       return;
     }
@@ -98,7 +85,7 @@ export default function DetailReview({ name, restid }) {
     const category = param.category;
     console.log('NEW', category);
     axios
-      .get('http://13.125.132.197:8082/api/images')
+      .get('http://52.79.243.153:8082/api/showreviews')
       .then((response) => {
         const result = response.data.filter((item) => item.name === name);
         setDataList(result);
@@ -131,7 +118,7 @@ export default function DetailReview({ name, restid }) {
             />
             <textarea
               onChange={changeContent}
-              value={content}
+              value={contents}
               className={styles.review_container2}
               spellCheck='false'
               placeholder='솔직한 리뷰를 남겨보세요.'
@@ -143,7 +130,9 @@ export default function DetailReview({ name, restid }) {
         ) : (
           <div className={styles.login_container}>
             <p className={styles.login_font}>로그인 시 리뷰작성 가능합니다.</p>
-            <button className={styles.login_button}>로그인</button>
+            <button className={styles.login_button} onClick={moveToLogin}>
+              로그인
+            </button>
           </div>
         )}
         <p className={styles.total}>최근 리뷰 ({dataList.length})</p>

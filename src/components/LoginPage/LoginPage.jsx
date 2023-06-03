@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import title from '../../img/title.png';
 import axios from 'axios';
 import Layout from '../Layout/Layout';
+import FindPop from '../FindPop/FindPop';
 
 const LoginPage = () => {
   // URL 변경하기 위한 것
@@ -45,9 +46,15 @@ const LoginPage = () => {
         return;
       });
   };
+  // 팝업
+  const [popUpOn, setPopUpOn] = useState(false);
+  const changeValue = () => {
+    setPopUpOn(() => !popUpOn);
+  };
 
   return (
     <main className={styles.main}>
+      {popUpOn && <FindPop changeValue={changeValue} />}
       <h2 className={styles.title} onClick={moveToMainPage}>
         <img className={styles.mju} src={title} alt='명슐랭가이드' />
       </h2>
@@ -72,8 +79,20 @@ const LoginPage = () => {
             />
           </div>
           <div className={styles.find_container}>
-            <button className={styles.find_id}>아이디/</button>
-            <button className={styles.find_pw}>비밀번호찾기</button>
+            <button
+              type='button'
+              className={styles.find_id}
+              onClick={changeValue}
+            >
+              아이디/
+            </button>
+            <button
+              type='button'
+              className={styles.find_pw}
+              onClick={changeValue}
+            >
+              비밀번호찾기
+            </button>
           </div>
         </div>
         <button className={styles.login_button} type='submit'>

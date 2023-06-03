@@ -10,18 +10,30 @@ export default function User() {
   const navigate = useNavigate();
   const moveToLogin = () => navigate('/login');
   const [state, setState] = useState({ nickName: '' });
-  const loadData = () => {
-    axios
-      .get('http://52.79.235.187:8082')
-      .then((res) => {
-        console.log(res.data);
-        setState(res.data);
-      })
-      .catch((err) => moveToLogin());
+  // const loadData = () => {
+  //   axios
+  //     .get('http://52.79.235.187:8082')
+  //     .then((res) => {
+  //       console.log(res.data);
+  //       setState(res.data);
+  //     })
+  //     .catch((err) => moveToLogin());
+  // };
+  // useEffect(() => {
+  //   loadData();
+  // }, []);
+
+  // 비번 변경
+  const [nextPw, setnextPw] = useState();
+  const changePw = (e) => {
+    setnextPw(e.target.value);
   };
-  useEffect(() => {
-    loadData();
-  }, []);
+  const sendPw = () => {
+    axios
+      .post('http://52.79.235.187:8082/api/changePassword', { nextPw })
+      .then((res) => alert(res.data))
+      .catch((err) => alert(err.data));
+  };
 
   return (
     <Layout>
@@ -31,9 +43,10 @@ export default function User() {
           <div className={styles.title_container}>
             <p className={styles.title}>마이페이지</p>
           </div>
+          {/* {.map((data) => { */}
           <div className={styles.info_container}>
-            <p className={styles.user_nick}>닉네임 : 륶제</p>
-            <p className={styles.user_email}>이메일 : 류제현@mju.ac.kr</p>
+            <p className={styles.user_nick}>닉네임 : </p>
+            <p className={styles.user_email}>이메일 : </p>
             <div className={styles.change_container}>
               <label className={styles.pw} htmlFor='pw'>
                 비밀번호 변경
@@ -43,8 +56,12 @@ export default function User() {
                 type='password'
                 name='pw'
                 id='pw'
+                onChange={changePw}
               />
-              <button className={styles.change_button}>변경</button>
+              <button className={styles.change_button} onClick={sendPw}>
+                변경
+              </button>
+              {/* })} */}
             </div>
           </div>
           <div className={styles.manage_container}>
