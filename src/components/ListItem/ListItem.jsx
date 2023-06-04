@@ -44,7 +44,10 @@ const ListItem = () => {
 
   const changeLike = (restid) => {
     const check = localStorage.getItem('state');
-    if (!check) return;
+    if (!check) {
+      alert('로그인 후에 사용 가능합니다');
+      return;
+    }
     axios
       .post('http://52.79.235.187:8082/api/like', {
         userId: check,
