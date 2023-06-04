@@ -3,10 +3,21 @@
   flex-direction: row;
   flex-wrap: wrap;
   margin-top: 7.8rem;
+  margin-bottom: 10rem;
+  animation: 600ms appear;
 }
 
 @media screen and (max-width: 768px) {
   .reels_container {
     margin-top: 7.2rem;
+  }
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }

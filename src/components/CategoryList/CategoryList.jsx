@@ -85,7 +85,7 @@ const CategoryList = () => {
       id: 11,
       title: '혼밥',
       image: bap,
-      path: '/list/혼밥',
+      path: '/list/혼자밥',
     },
   ];
   return (

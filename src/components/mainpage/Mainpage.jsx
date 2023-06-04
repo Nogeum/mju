@@ -8,7 +8,7 @@ import RecItem from '../RecItem/RecItem';
 import Layout from '../Layout/Layout';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 import event1 from '../../img/event1.jpg';
 import event2 from '../../img/event2.jpg';
@@ -17,7 +17,6 @@ import event4 from '../../img/event4.jpg';
 import { useNavigate } from 'react-router-dom';
 
 const Mainpage = () => {
-  const navigate = useNavigate();
   const [recList, setRecList] = useState([]);
   const settings = {
     dots: true,
@@ -30,10 +29,14 @@ const Mainpage = () => {
 
   const loadRecList = () => {
     axios
-      .get('')
+      .get('http://52.79.235.187:8082/api/recommend')
       .then((res) => setRecList(res.data))
       .catch((err) => console.error(err));
   };
+
+  useEffect(() => {
+    loadRecList();
+  }, []);
 
   return (
     <Layout>
@@ -82,13 +85,9 @@ const Mainpage = () => {
         <div className={styles.recommend_container}>
           <h2 className={styles.section_name}>추천 맛집</h2>
           <div className={styles.recommend_list}>
-            <RecItem />
-            <RecItem />
-            <RecItem />
-            <RecItem />
-            {/* {
-              recList.map((item) => <RecItem item={item}/>)
-            } */}
+            {recList.map((item) => (
+              <RecItem item={item} />
+            ))}
           </div>
         </div>
       </section>

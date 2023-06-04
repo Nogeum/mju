@@ -15,6 +15,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  animation: 600ms appear;
 }
 .close {
   color: white;
@@ -55,9 +56,17 @@
   aspect-ratio: 1/1;
 }
 .contents {
-  font-size: 1.3rem;
-  padding: 0 1%;
-  padding-bottom: 2%;
+  font-size: 1.5rem;
+  padding: 1.5rem 1.4rem 2rem 1.4rem;
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 @media screen and (max-width: 480px) {

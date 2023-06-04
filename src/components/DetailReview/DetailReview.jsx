@@ -1,17 +1,22 @@
 import axios from 'axios';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styles from './DetailReview.module.css';
 import { useNavigate, useParams } from 'react-router-dom';
 import ReactStars from 'react-stars';
-import { CookiesProvider } from 'react-cookie';
 
-export default function DetailReview({ name, restid }) {
+export default function DetailReview({
+  name,
+  restid,
+  loadReviewList,
+  reviewList,
+}) {
+  const inputRef = useRef();
   const navigate = useNavigate();
   const moveToLogin = () => navigate('/login');
   const [state, setState] = useState(false);
   const loadData2 = () => {
     const nogeum = localStorage.getItem('state');
-    if (nogeum === 'check') setState(true);
+    if (nogeum) setState(true);
   };
 
   // 별점입력 및  유지
@@ -27,12 +32,18 @@ export default function DetailReview({ name, restid }) {
     setContent(e.target.value);
   };
   const sendData = () => {
+    const userId = localStorage.getItem('state');
+    if (!userId) {
+      alert('로그인 후에 사용 가능합니다.');
+      return;
+    }
     axios
       .post('http://52.79.235.187:8082/api/reviews', {
-        name,
+        userId,
         restid,
         contents,
         rate,
+        name,
       })
       .then((response) => console.log(response.data))
       .catch((Error) => {
@@ -42,8 +53,10 @@ export default function DetailReview({ name, restid }) {
   //리뷰 사진업로드
   const [file, setFile] = useState();
 
-  const formData = new FormData();
   const onChangeImg = (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+
     if (e.target.files) {
       const uploadFile = e.target.files[0];
       formData.append('multipartFileList', uploadFile);
@@ -55,6 +68,9 @@ export default function DetailReview({ name, restid }) {
   };
   // 리뷰 사진 전송
   const onClickSend = () => {
+    const formData = new FormData();
+    formData.append('multipartFileList', file);
+
     axios
       .post('http://52.79.235.187:8082/api/upload', formData, {
         headers: {
@@ -74,27 +90,24 @@ export default function DetailReview({ name, restid }) {
       alert('별점기입 혹은 리뷰를 작성해주세요');
       return;
     }
+    if (!file) {
+      alert('사진을 반드시 첨부해야 합니다.');
+      return;
+    }
     sendData();
     onClickSend();
+    setContent('');
+    setFile();
+    inputRef.current.value = '';
+    alert('리뷰 작성이 완료되었습니다!');
+    window.location.reload();
   };
 
   // 해당식당의 리뷰출력
   const param = useParams();
-  const [dataList, setDataList] = useState([]);
-  const loadData = () => {
-    const category = param.category;
-    console.log('NEW', category);
-    axios
-      .get('http://52.79.243.153:8082/api/showreviews')
-      .then((response) => {
-        const result = response.data.filter((item) => item.name === name);
-        setDataList(result);
-      })
-      .catch((err) => console.error(err));
-  };
 
   useEffect(() => {
-    loadData();
+    loadReviewList();
     loadData2();
   }, [param.category]);
 
@@ -111,6 +124,7 @@ export default function DetailReview({ name, restid }) {
               value={rate}
             />
             <input
+              ref={inputRef}
               type='file'
               id='profile-upload'
               accept='image/*'
@@ -135,19 +149,19 @@ export default function DetailReview({ name, restid }) {
             </button>
           </div>
         )}
-        <p className={styles.total}>최근 리뷰 ({dataList.length})</p>
+        <p className={styles.total}>최근 리뷰 ({reviewList.length})</p>
         <section className={styles.section}>
-          {dataList.map((dataList) => (
+          {reviewList.map((review) => (
             <div className={styles.review_container3}>
-              <p className={styles.id}>{dataList.userId}</p>
+              <p className={styles.id}>{review.userId}</p>
               <ReactStars
                 count={5}
-                value={dataList.rate}
+                value={review.rate}
                 edit={false}
                 size={20}
               />
-              <img className={styles.img} src={dataList.image} alt='' />
-              <p className={styles.contents}>{dataList.contents}</p>
+              <img className={styles.img} src={review.image} alt='' />
+              <p className={styles.contents}>{review.contents}</p>
             </div>
           ))}
         </section>

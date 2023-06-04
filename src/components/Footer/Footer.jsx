@@ -22,7 +22,7 @@ export default function Footer() {
     //     console.log(err.data);
     //   });
     const jong = localStorage.getItem('state');
-    if (jong === 'check') {
+    if (jong) {
       setLogState(true);
     }
   };
@@ -33,7 +33,7 @@ export default function Footer() {
   const navigate = useNavigate();
   const moveToMain = () => navigate('/');
   const moveToReels = () => navigate('/reels');
-  // const moveToKeep = ()=>navigate('/keep')
+  const moveToLike = () => navigate('/like');
   const moveToLogin = () => navigate('/login');
   const moveToUser = () => navigate('/user');
 
@@ -45,7 +45,7 @@ export default function Footer() {
       <button onClick={moveToReels}>
         <FontAwesomeIcon icon={faCompass} />
       </button>
-      <button>
+      <button onClick={moveToLike}>
         <FontAwesomeIcon icon={faHeart} />
       </button>
       {logState ? (

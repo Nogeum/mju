@@ -18,6 +18,11 @@
   margin: 0.5rem 0 0.2rem 0;
 }
 
+.image {
+  width: 100%;
+  aspect-ratio: 1/1;
+}
+
 @media screen and (max-width: 768px) {
   .item {
     width: 32%;

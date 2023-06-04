@@ -7,6 +7,7 @@ import SignUp from './components/SignUp/SignUp';
 import Reels from './components/Reels/Reels';
 import Testpage from './components/testpage/Testpage';
 import User from './components/User/User';
+import { LikePage } from './components/LikePage/LikePage';
 
 function App() {
   return (
@@ -21,6 +22,9 @@ function App() {
           <Route path='/detail/:id' element={<DetailPage />}></Route>
           <Route path='/signup' element={<SignUp />}></Route>
           <Route path='/reels' element={<Reels />}></Route>
+          <Route path='/user' element={<User />}></Route>
+          <Route path='/like' element={<LikePage />}></Route>
+
           <Route path='/search/:category' element={<ListItem />}></Route>
         </Routes>
       </BrowserRouter>

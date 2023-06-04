@@ -36,8 +36,7 @@ const LoginPage = () => {
     axios
       .post('http://52.79.235.187:8082/api/login', { userId, userPw })
       .then((res) => {
-        console.log(res.data);
-        localStorage.setItem('state', 'check');
+        localStorage.setItem('state', res.data);
         alert('환영합니다!');
         moveToMainPage();
       })

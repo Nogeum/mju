@@ -12,7 +12,6 @@ import axios from 'axios';
 import Detailinfo from '../DetailInfo/Detailinfo';
 import DetailMenu from '../DetailMenu/DetailMenu';
 import Slider from 'react-slick';
-import qt from '../../img/qt.jpeg';
 
 const DetailPage = () => {
   const settings = {
@@ -23,15 +22,31 @@ const DetailPage = () => {
     slidesToScroll: 1,
     autoplay: true,
   };
-  const [dataList, setDataList] = useState();
+  const param = useParams();
+  const [dataList, setDataList] = useState([]);
   const [src, setSrc] = useState();
   const [src2, setSrc2] = useState();
   const [selected, setSelected] = useState('menu');
+  const [avgRate, setAvgRate] = useState(0);
+  const [reviewList, setReviewList] = useState([]);
+  const loadReviewList = () => {
+    axios
+      .get('http://52.79.235.187:8082/api/showreviews')
+      .then((response) => {
+        let totalRate = 0;
+        console.log(response);
+        const result = response.data.filter((item) => item.restid === param.id);
+        result.forEach((item) => (totalRate += item.rate));
+        setAvgRate(totalRate / result.length);
+        result.reverse();
+        setReviewList(result);
+      })
+      .catch((err) => console.error(err));
+  };
 
   const changeSelectedValue = (value) => {
     setSelected(value);
   };
-  const param = useParams();
 
   const loadData = () => {
     const ID = param.id;
@@ -52,6 +67,7 @@ const DetailPage = () => {
 
   useEffect(() => {
     loadData();
+    loadReviewList();
   }, [param.id]);
 
   const moveToListPage = () => {
@@ -80,7 +96,7 @@ const DetailPage = () => {
             <ReactStars
               className={styles.star}
               count={5}
-              value={dataList.infoRate.RATE}
+              value={avgRate}
               edit={false}
               size={20}
             />
@@ -133,7 +149,12 @@ const DetailPage = () => {
                   num={dataList.info.NUMBER}
                 />
               ) : (
-                <DetailReview name={dataList.info.NAME} restid={param.id} />
+                <DetailReview
+                  name={dataList.info.NAME}
+                  restid={param.id}
+                  loadReviewList={loadReviewList}
+                  reviewList={reviewList}
+                />
               )}
             </div>
           </div>

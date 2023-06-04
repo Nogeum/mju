@@ -23,11 +23,19 @@ export default function DetailMenu({ main, price, side, price2 }) {
   }, []);
   // 사이드메뉴
   const makeSideList = (side, price2) => {
+    console.log(side, price2);
+    if (!side || side.length === 0) return;
+
     const result2 = [];
     for (let i = 0; i < side.length; i++) {
       let item = {};
       item.name = side[i];
-      item.price = price2[i];
+      if (!price2 || price2.length < i - 1) {
+        item.price = 0;
+      } else {
+        item.price = price2[i];
+      }
+
       result2.push(item);
     }
     setSideList(result2);
@@ -57,7 +65,7 @@ export default function DetailMenu({ main, price, side, price2 }) {
         <div className={styles.container1}>
           <div className={styles.container2}>
             <p className={styles.name}>{item.name}</p>
-            <p className={styles.price}>{item.price}원</p>
+            <p className={styles.price}>{item.price === 0 ? '' : item.price}</p>
           </div>
           <img
             className={styles.image}
