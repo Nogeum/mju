@@ -4,8 +4,11 @@ import Layout from '../Layout/Layout';
 import Header from '../Header/Header';
 import axios from 'axios';
 import Footer from '../Footer/Footer';
+import { useNavigate } from 'react-router-dom';
 
 const SignUp = (props) => {
+  const navigate = useNavigate();
+  const moveToMain = () => navigate('/');
   const [email, setEmail] = useState('');
   const [cerNum, setCerNum] = useState();
   const [nickName, setNickName] = useState('');
@@ -48,7 +51,7 @@ const SignUp = (props) => {
         console.log('인증번호발송');
         alert('인증번호 발송');
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err.res.data));
   };
 
   // 인증번호 확인
@@ -57,12 +60,13 @@ const SignUp = (props) => {
       .post('http://52.79.235.187:8082/api/emailCode', { email, cerNum })
       .then((res) => {
         console.log(res.data);
+        alert('인증 성공!');
         setIsCer(true);
       })
 
       .catch((err) => {
-        console.log(err);
-        setIsCer(false);
+        console.log(err.res.data);
+        alert('인증 실패. 다시 시도해주세요.');
       });
   };
   const checkId = () => {
@@ -101,7 +105,7 @@ const SignUp = (props) => {
       !userPw ||
       !isId ||
       !isNick ||
-      isCer
+      !isCer
     ) {
       alert('모든 정보를 기입해주세요.');
       return;
@@ -113,7 +117,11 @@ const SignUp = (props) => {
         userId,
         userPw,
       })
-      .then((response) => console.log(response.data))
+      .then((response) => {
+        console.log(response.data);
+        alert('회원가입에 성공했습니다!');
+        moveToMain();
+      })
       .catch((Error) => {
         console.log(Error.response.data);
       });
