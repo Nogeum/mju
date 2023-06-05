@@ -7,17 +7,17 @@ import Footer from '../Footer/Footer';
 
 const SignUp = (props) => {
   const [email, setEmail] = useState('');
-  // const [cerNum, setCerNum] = useState();
+  const [cerNum, setCerNum] = useState();
   const [nickName, setNickName] = useState('');
   const [userId, setUserId] = useState('');
   const [userPw, setUserPw] = useState('');
 
-  // const [isCer, setIsCer] = useState(false);
+  const [isCer, setIsCer] = useState(false);
   const [isId, setIsId] = useState(false);
   const [isNick, setIsNick] = useState(false);
 
   const changeEmail = (e) => setEmail(e.target.value);
-  // const changeCerNum = (e) => setCerNum(e.target.value);
+  const changeCerNum = (e) => setCerNum(e.target.value);
   const changeNick = (e) => setNickName(e.target.value);
   const changeUserId = (e) => setUserId(e.target.value);
   const changeUserPw = (e) => setUserPw(e.target.value);
@@ -39,28 +39,33 @@ const SignUp = (props) => {
   };
 
   // 인증번호 전송
-  // const sendCertNum = () => {
-  //   if (!checkValidEmail()) return;
-  //   axios
-  //     .post('http://52.79.235.187:8082/api/email', { email })
-  //     .then((res) => {
-  //       console.log(res.data);
-  //       console.log('인증번호발송');
-  //       alert('인증번호 발송');
-  //     })
-  //     .catch((err) => console.log(err));
-  // };
+  const sendCertNum = () => {
+    if (!checkValidEmail()) return;
+    axios
+      .post('http://52.79.235.187:8082/api/email', { email })
+      .then((res) => {
+        console.log(res.data);
+        console.log('인증번호발송');
+        alert('인증번호 발송');
+      })
+      .catch((err) => console.log(err));
+  };
 
-  // // 인증번호 확인
-  // const checkCerNum = () => {
-  //   axios
-  //     .post('http://52.79.235.187:8082/api/emailCode', { email, cerNum })
-  //     .then((res) => {console.log(res.data) setIsCer(true);})
+  // 인증번호 확인
+  const checkCerNum = () => {
+    axios
+      .post('http://52.79.235.187:8082/api/emailCode', { email, cerNum })
+      .then((res) => {
+        console.log(res.data);
+        setIsCer(true);
+      })
 
-  //     .catch((err) => console.log(err); setIsCer(false););
-  // };
+      .catch((err) => {
+        console.log(err);
+        setIsCer(false);
+      });
+  };
   const checkId = () => {
-    // if (!checkValidEmail()) return;
     axios
       .post('http://52.79.235.187:8082/api/id', { userId })
       .then((res) => {
@@ -89,7 +94,15 @@ const SignUp = (props) => {
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    if (!email || !nickName || !userId || !userPw || !isId || !isNick) {
+    if (
+      !email ||
+      !nickName ||
+      !userId ||
+      !userPw ||
+      !isId ||
+      !isNick ||
+      isCer
+    ) {
       alert('모든 정보를 기입해주세요.');
       return;
     }
@@ -122,23 +135,23 @@ const SignUp = (props) => {
             spellCheck='false'
             placeholder='학교 이메일'
           />
-          {/* <button type='button' onClick={sendCertNum}>
+          <button type='button' onClick={sendCertNum}>
             인증발송
-          </button> */}
+          </button>
         </div>
-        {/* <div className={styles.input_with_button}> */}
-        {/* <input
+        <div className={styles.input_with_button}>
+          <input
             name='cerNum'
             value={cerNum}
             onChange={changeCerNum}
             type='text'
             spellCheck='false'
             placeholder='인증번호'
-          /> */}
-        {/* <button onClick={checkCerNum} type='button'>
+          />
+          <button onClick={checkCerNum} type='button'>
             인증확인
-          </button> */}
-        {/* </div> */}
+          </button>
+        </div>
         <div className={styles.input_with_button}>
           <input
             name='nickName'

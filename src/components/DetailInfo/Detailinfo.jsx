@@ -3,13 +3,6 @@ import styles from './DetailInfo.module.css';
 import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 
 export default function Detailinfo({ name, time, loc, num, map }) {
-  const dummy = [
-    {
-      name: '명지대학교 제 5공학관',
-      time: '연중무휴 24시간 운영',
-      location: '경기도 용인시 처인구 명지로 116',
-    },
-  ];
   const containerStyle = {
     width: '95%',
     height: '40rem',
@@ -17,7 +10,6 @@ export default function Detailinfo({ name, time, loc, num, map }) {
     marginTop: '2rem',
     borderRadius: '8px',
   };
-  const center = { lat: 37.2222086, lng: 127.187657 };
   return (
     <div>
       <div className={styles.info}>

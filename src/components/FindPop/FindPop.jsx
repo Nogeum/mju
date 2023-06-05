@@ -23,6 +23,7 @@ export default function FindPop(props) {
       })
       .catch((Error) => {
         console.log(Error.response.data);
+        alert('이메일을 확인해주세요.');
       });
   };
   const onSubmitHandler2 = (e) => {
